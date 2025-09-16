@@ -13,13 +13,13 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Entity
-@Table(name = "cl_habilidade")
-public class Habilidade {
+@Table(name = "cl_skill")
+public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
+    private String name;
     
 
 }

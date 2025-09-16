@@ -7,15 +7,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ws.carelink.core.domain.cuidador.Cuidador;
+import com.ws.carelink.application.command.CreateCaregiverCommand;
+import com.ws.carelink.core.domain.cuidador.Caregiver;
+
 
 @RestController
 @RequestMapping("/v1/cuidadores")
-public class CuidadorResource {
+public class CaregiverResource {
 
     @PostMapping
-    public ResponseEntity<Void> criarCuidador(@RequestBody Cuidador cuidador) {
-        
+    public ResponseEntity<Void> create(@RequestBody CreateCaregiverCommand command) {
+
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

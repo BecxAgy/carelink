@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.br.CPF;
 
-import com.ws.carelink.core.domain.Endereco;
+import com.ws.carelink.core.domain.Address;
 import com.ws.carelink.core.domain.user.User;
 
 import jakarta.persistence.CascadeType;
@@ -48,8 +48,9 @@ public class Caregiver {
     @Column(name = "rg", nullable = false, unique = true)
     private String rg;
 
-    @Column(name = "address", nullable = false)
-    private Endereco address;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", nullable = false)
+    private Address address;
 
     @Column(name = "resume_url", nullable = false)
     private String resumeUrl;
@@ -60,7 +61,8 @@ public class Caregiver {
     @Column(name = "residence_proof_url", nullable = false)
     private String residenceProofUrl;
 
-    @OneToOne(mappedBy = "caregiver", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToMany(cascade = CascadeType.ALL)

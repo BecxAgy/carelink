@@ -1,4 +1,4 @@
-package com.ws.carelink.core.domain.usuario;
+package com.ws.carelink.core.domain.user;
 
 import com.ws.carelink.shared.utils.enumeration.ValueLabelEnum;
 

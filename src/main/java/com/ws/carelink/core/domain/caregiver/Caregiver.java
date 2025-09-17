@@ -1,4 +1,4 @@
-package com.ws.carelink.core.domain.cuidador;
+package com.ws.carelink.core.domain.caregiver;
 
 import java.sql.Date;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.hibernate.validator.constraints.br.CPF;
 
 import com.ws.carelink.core.domain.Endereco;
-import com.ws.carelink.core.domain.usuario.User;
+import com.ws.carelink.core.domain.user.User;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

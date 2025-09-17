@@ -1,4 +1,4 @@
-package com.ws.carelink.core.domain.cuidador;
+package com.ws.carelink.core.domain.caregiver;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

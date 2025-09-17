@@ -1,6 +1,6 @@
-package com.ws.carelink.core.domain.cliente;
+package com.ws.carelink.core.domain.client;
 
-import com.ws.carelink.core.domain.usuario.User;
+import com.ws.carelink.core.domain.user.User;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;

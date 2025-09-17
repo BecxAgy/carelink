@@ -1,4 +1,4 @@
-package com.ws.carelink.infra.in.ws.cuidador;
+package com.ws.carelink.infra.in.ws.caregiver;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ws.carelink.application.command.CreateCaregiverCommand;
-import com.ws.carelink.core.domain.cuidador.Caregiver;
+import com.ws.carelink.core.domain.caregiver.Caregiver;
 
 
 @RestController

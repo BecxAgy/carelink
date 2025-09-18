@@ -1,4 +1,4 @@
-package com.ws.carelink.infra.out.persistence.caregiver.springdata;
+package com.ws.carelink.infra.out.persistence.jpa.caregiver.springdata;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

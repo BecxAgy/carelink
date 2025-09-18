@@ -1,10 +1,10 @@
-package com.ws.carelink.infra.out.persistence.user;
+package com.ws.carelink.infra.out.persistence.jpa.user;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.ws.carelink.core.domain.user.User;
 import com.ws.carelink.core.repository.user.UserRepository;
-import com.ws.carelink.infra.out.persistence.user.springdata.SpringDataUserRepository;
+import com.ws.carelink.infra.out.persistence.jpa.user.springdata.SpringDataUserRepository;
 import com.ws.carelink.shared.exception.ObjetoNaoEncontradoException;
 
 public class JPAUserRepository implements UserRepository {

@@ -1,11 +1,11 @@
-package com.ws.carelink.infra.out.persistence.caregiver;
+package com.ws.carelink.infra.out.persistence.jpa.caregiver;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.ws.carelink.core.domain.caregiver.Caregiver;
 import com.ws.carelink.core.repository.caregiver.CaregiverRepository;
-import com.ws.carelink.infra.out.persistence.caregiver.springdata.SpringDataCaregiverRepository;
+import com.ws.carelink.infra.out.persistence.jpa.caregiver.springdata.SpringDataCaregiverRepository;
 import com.ws.carelink.shared.exception.ObjetoNaoEncontradoException;
 
 public class JPACaregiverRepository implements CaregiverRepository {

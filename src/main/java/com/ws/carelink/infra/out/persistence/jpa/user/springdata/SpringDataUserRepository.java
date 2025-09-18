@@ -1,4 +1,4 @@
-package com.ws.carelink.infra.out.persistence.user.springdata;
+package com.ws.carelink.infra.out.persistence.jpa.user.springdata;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,26 +1,25 @@
 package com.ws.carelink.core.domain.user;
 
-import com.ws.carelink.infra.out.persistence.jpa.converter.RoleValuesConverter;
+import com.ws.carelink.shared.utils.enumeration.ValueLabelEnum;
 
-import jakarta.persistence.Convert;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Data;
+public enum Role implements ValueLabelEnum<Role> {
+    ADMIN("Administrador"),
+    USER("Usuário");
 
-@Data
-@Table(name = "cl_role")
-@Entity
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String label;
+    
 
-    private String nome;
+    private Role(String label) {
+        this.label = label;
+    }
 
-    @Convert(converter = RoleValuesConverter.class)
-    private RoleValues value;
+    @Override
+    public String getLabel() {
+        return label;
+    }
 
+    @Override
+    public String getValue() {
+        return name();
+    }
 }

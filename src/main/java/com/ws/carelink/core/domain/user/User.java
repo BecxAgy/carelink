@@ -1,6 +1,10 @@
 package com.ws.carelink.core.domain.user;
 
+import java.util.Collection;
 import java.util.Set;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -17,7 +21,7 @@ import lombok.Data;
 @Table(name = "cl_user")
 @Entity
 @Data
-public class User{
+public class User implements UserDetails{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
@@ -36,4 +40,14 @@ public class User{
     )
 
     private Role role;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+       return Set.of(() -> role.getLabel());
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
 }

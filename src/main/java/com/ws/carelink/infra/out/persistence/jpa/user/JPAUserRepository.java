@@ -34,5 +34,11 @@ public class JPAUserRepository implements UserRepository {
     public Page<User> findAll(Pageable pageable) {
         return springDataUserRepository.findAll(pageable);
     }
+
+    @Override
+    public User findByUsername(String username) {
+    return springDataUserRepository.findByUsername(username).orElseThrow(ObjetoNaoEncontradoException::new);
+        
+    }
     
 }

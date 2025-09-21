@@ -18,6 +18,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+
 public class JwtAuthenticationFilter extends OncePerRequestFilter{
 
     private final JwtUseCase jwtUsecase;
@@ -44,7 +45,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
         userEmail = jwtUsecase.extractUsername(jwt);
 
         if(!userEmail.isBlank() && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserDetails userDetails = userUsecase.getUserByUsername(userEmail);
+            UserDetails userDetails = userUsecase.loadUserByUsername(userEmail);
 
             if(jwtUsecase.isTokenValid(jwt, userDetails)){
                 SecurityContext context = SecurityContextHolder.createEmptyContext();

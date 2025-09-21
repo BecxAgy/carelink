@@ -1,4 +1,4 @@
-package com.ws.carelink.core.application.service.impl.user;
+package com.ws.carelink.core.application.service.user;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,14 +13,15 @@ public class UserService  implements UserUseCase {
         this.userRepository = userRepository;
     }
 
-    @Override
-    public UserDetails getUserByUsername(String username) {    
-        return userRepository.findByUsername(username);
-    }
 
     @Override
     public UserDetails getUserById(Long id) {
         return userRepository.get(id);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
     
 }

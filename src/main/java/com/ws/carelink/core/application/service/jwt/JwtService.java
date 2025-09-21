@@ -1,4 +1,4 @@
-package com.ws.carelink.core.application.service.impl.jwt;
+package com.ws.carelink.core.application.service.jwt;
 
 import java.util.Date;
 

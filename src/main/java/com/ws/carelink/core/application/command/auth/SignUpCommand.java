@@ -1,4 +1,4 @@
-package com.ws.carelink.core.application.command;
+package com.ws.carelink.core.application.command.auth;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 

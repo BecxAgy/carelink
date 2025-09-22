@@ -1,11 +1,13 @@
 package com.ws.carelink.core.application.usecase.auth;
 
-import com.ws.carelink.core.application.command.SignInCommand;
-import com.ws.carelink.core.application.command.SignUpCommand;
-import com.ws.carelink.core.application.representation.UserRepresentation;
+import com.ws.carelink.core.application.command.auth.SignInCommand;
+import com.ws.carelink.core.application.command.auth.SignUpCommand;
+import com.ws.carelink.core.application.representation.auth.JwtAuthRepresentation;
+import com.ws.carelink.core.application.representation.user.UserRepresentation;
 
 public interface AuthUseCase {
 
     UserRepresentation signUp(SignUpCommand command);
-    UserRepresentation signIn(SignInCommand command); 
+    JwtAuthRepresentation signIn(SignInCommand command); 
+    JwtAuthRepresentation refreshToken(String refreshToken);
 }

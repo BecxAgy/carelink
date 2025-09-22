@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ws.carelink.core.application.command.SignUpCommand;
-import com.ws.carelink.core.application.representation.UserRepresentation;
+import com.ws.carelink.core.application.command.auth.SignInCommand;
+import com.ws.carelink.core.application.command.auth.SignUpCommand;
+import com.ws.carelink.core.application.representation.auth.JwtAuthRepresentation;
+import com.ws.carelink.core.application.representation.user.UserRepresentation;
 import com.ws.carelink.core.application.usecase.auth.AuthUseCase;
 
 import lombok.RequiredArgsConstructor;
@@ -20,11 +22,15 @@ public class AuthResource {
     private final AuthUseCase authUseCase;
 
     @PostMapping("/signup")
-    public ResponseEntity<UserRepresentation> signUp(@RequestBody SignUpCommand command){
-         
+    public ResponseEntity<UserRepresentation> signUp(@RequestBody SignUpCommand command){     
         return ResponseEntity.ok(authUseCase.signUp(command));
     }
 
-    
+
+    @PostMapping("/signin")
+    public ResponseEntity<JwtAuthRepresentation> signIn(@RequestBody SignInCommand command){
+        return ResponseEntity.ok(authUseCase.signIn(command));
+    }
+ 
     
 }

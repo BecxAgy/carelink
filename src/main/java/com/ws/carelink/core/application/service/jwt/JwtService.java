@@ -1,6 +1,7 @@
 package com.ws.carelink.core.application.service.jwt;
 
 import java.util.Date;
+import java.util.Map;
 
 import javax.crypto.SecretKey;
 
@@ -22,17 +23,27 @@ public class JwtService implements JwtUseCase {
     @Value("${jwt.expire-interval}")
     private long expireInterval;
 
-    public String generateToken(UserDetails userDetails, Claims extraClaims) {
+    public String generateToken(UserDetails userDetails) {
         return Jwts
                 .builder()
-                .claims().add(extraClaims)
-                .and()
                 .subject(userDetails.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + expireInterval))
                 .signWith(getSignInKey())
                 .compact();
     }
+
+    public String generateRefreshToken(UserDetails userDetails, Map<String, Object> extraClaims) {
+        return Jwts
+                .builder()
+                .claims(extraClaims)
+                .subject(userDetails.getUsername())
+                .issuedAt(new Date(System.currentTimeMillis()))
+                .expiration(new Date(System.currentTimeMillis() + expireInterval * 24))
+                .signWith(getSignInKey())
+                .compact();
+    }
+
 
     public String extractUsername(String token) {
         Claims claims = extractAllClaims(token);

@@ -2,8 +2,10 @@ package com.ws.carelink.shared.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -30,9 +32,10 @@ public class SecurityConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/v1/auth/**").permitAll()
-                        .requestMatchers("/api/v1/backoffice/**").hasRole(Role.ADMIN.name())
-                        .requestMatchers("/api/v1/common/**").hasAnyRole(Role.ADMIN.name(), Role.USER.name())
+                        .requestMatchers("/api/v1/auth/**", "/api/v1/commom/**").permitAll()
+                        .requestMatchers("/api/v1/backoffice/**").hasAnyRole(Role.USER.name(), Role.ADMIN.name())
+                        .requestMatchers("/api/v1/caregiver/**").hasAnyRole(Role.CAREGIVER.name(), Role.ADMIN.name())
+                        .requestMatchers("/api/v1/client/**").hasAnyRole(Role.CLIENT.name(), Role.ADMIN.name(), Role.USER.name())
                         .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider()).addFilterBefore(
@@ -47,13 +50,18 @@ public class SecurityConfiguration {
     }
 
     @Bean
+    @SuppressWarnings("deprecation")
     public AuthenticationProvider authenticationProvider() {
-       DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userUsecase);
+       DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+       authProvider.setUserDetailsService(userUsecase);
        authProvider.setPasswordEncoder(passwordEncoder());
        
        return authProvider;
     }
 
-
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
+    }
 
 }

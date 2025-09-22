@@ -4,6 +4,8 @@ import com.ws.carelink.shared.utils.enumeration.ValueLabelEnum;
 
 public enum Role implements ValueLabelEnum<Role> {
     ADMIN("Administrador"),
+    CLIENT("Cliente"),
+    CAREGIVER("Cuidador"),
     USER("Usuário");
 
     private String label;

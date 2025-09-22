@@ -1,4 +1,4 @@
-package com.ws.carelink.core.application.representation;
+package com.ws.carelink.core.application.representation.user;
 
 import com.ws.carelink.core.domain.user.User;
 

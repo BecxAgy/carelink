@@ -9,6 +9,6 @@ import com.ws.carelink.shared.exception.ObjetoNaoEncontradoException;
 
 public interface SpringDataUserRepository extends JpaRepository<User, Long> {
     
-    Optional<User> findByUsername(String username) throws ObjetoNaoEncontradoException;
+    Optional<User> findByEmail(String email) throws ObjetoNaoEncontradoException;
     
 }

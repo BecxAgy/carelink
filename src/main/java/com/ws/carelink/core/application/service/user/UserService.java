@@ -1,17 +1,18 @@
 package com.ws.carelink.core.application.service.user;
 
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
 import com.ws.carelink.core.application.usecase.user.UserUseCase;
 import com.ws.carelink.core.repository.user.UserRepository;
 
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
 public class UserService  implements UserUseCase {
 
     private final UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
 
     @Override

@@ -16,10 +16,10 @@ import io.jsonwebtoken.security.Keys;
 
 @Service
 public class JwtService implements JwtUseCase {
-    @Value("${com.secapp.jwt.secret}")
+    @Value("${jwt.secret}")
     private String secretKey;
 
-    @Value("${com.secapp.jwt.expire-interval}")
+    @Value("${jwt.expire-interval}")
     private long expireInterval;
 
     public String generateToken(UserDetails userDetails, Claims extraClaims) {

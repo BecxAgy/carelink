@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ws.carelink.core.application.command.auth.RefreshTokenCommand;
 import com.ws.carelink.core.application.command.auth.SignInCommand;
 import com.ws.carelink.core.application.command.auth.SignUpCommand;
 import com.ws.carelink.core.application.representation.auth.JwtAuthRepresentation;
@@ -30,6 +31,11 @@ public class AuthResource {
     @PostMapping("/signin")
     public ResponseEntity<JwtAuthRepresentation> signIn(@RequestBody SignInCommand command){
         return ResponseEntity.ok(authUseCase.signIn(command));
+    }
+
+    @PostMapping("/refresh-token")
+    public ResponseEntity<JwtAuthRepresentation> refreshToken(@RequestBody RefreshTokenCommand refreshToken){
+        return ResponseEntity.ok(authUseCase.refreshToken(refreshToken));
     }
  
     

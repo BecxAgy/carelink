@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
-import io.jsonwebtoken.Claims;
 
 public interface JwtUseCase {
     String extractUsername(String token);

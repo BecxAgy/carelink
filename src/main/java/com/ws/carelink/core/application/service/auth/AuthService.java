@@ -7,6 +7,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.ws.carelink.core.application.command.auth.RefreshTokenCommand;
 import com.ws.carelink.core.application.command.auth.SignInCommand;
 import com.ws.carelink.core.application.command.auth.SignUpCommand;
 import com.ws.carelink.core.application.representation.auth.JwtAuthRepresentation;
@@ -61,18 +62,17 @@ public class AuthService implements AuthUseCase {
     }
  
     @Override
-    public JwtAuthRepresentation refreshToken(String refreshToken) {
-        String username = jwtUseCase.extractUsername(refreshToken);
+    public JwtAuthRepresentation refreshToken(RefreshTokenCommand command) {
+        String username = jwtUseCase.extractUsername(command.refreshToken());
         User user = userRepository.findByUsername(username);
 
-        if (!jwtUseCase.isTokenValid(refreshToken, user)) {
+        if (!jwtUseCase.isTokenValid(command.refreshToken(), user)) {
             throw new AuthenticationException("Invalid refresh token");
         }
 
         String token = jwtUseCase.generateToken(user);
-        String newRefreshToken = jwtUseCase.generateRefreshToken(user, new HashMap<>());
 
-        return new JwtAuthRepresentation(token, newRefreshToken);
+        return new JwtAuthRepresentation(token, command.refreshToken());
     }
     
 }
